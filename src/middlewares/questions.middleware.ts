@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import {
   QuestionToCreateSchema,
   QuestionToUpdateSchema
-} from 'src/schemas/questions.schema.js';
+} from '../schemas/questions.schema.js';
 
 function TopicIdMiddleware (
   req: Request,

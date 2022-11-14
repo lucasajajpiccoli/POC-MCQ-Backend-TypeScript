@@ -1,7 +1,7 @@
-import { QuestionToRead } from '../protocols.js';
+import { QuestionToRead, QuestionFromDatabase } from '../protocols.js';
 import * as repository from '../repositories/questions.repository.js';
 
-function createQuestionsList(selection: any[]): QuestionToRead[] {
+function createQuestionsList(selection: QuestionFromDatabase[]): QuestionToRead[] {
   const ids = Array.from(new Set(selection.map(alternative => alternative.id)));
   const questions = ids.map(id => {
     const { name, topic, subject, stem } = selection.find(alternative => alternative.id === id);

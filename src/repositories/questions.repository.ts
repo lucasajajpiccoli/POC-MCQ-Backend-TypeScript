@@ -5,14 +5,14 @@ import { QuestionToCreate, Alternative, QuestionToUpdate } from '../protocols.js
 async function insertAlternative(
   alternative: Alternative,
   id: number
-): Promise<QueryResult<any>> {
+): Promise<QueryResult> {
   return connection.query(`
-    INSERT INTO alternatives (content, correct, "questionId") VAUES ($1, $2, $3) RETURNING ID;
+    INSERT INTO alternatives (content, correct, "questionId") VALUES ($1, $2, $3) RETURNING ID;
   `, [alternative.content, alternative.correct, id]
   );
 }
 
-async function insertQuestion(question: QuestionToCreate): Promise<QueryResult<any>> {
+async function insertQuestion(question: QuestionToCreate): Promise<QueryResult> {
   return connection.query(`
     INSERT INTO questions (name, stem, "topicId") VALUES ($1, $2, $3) RETURNING ID;
   `, [question.name, question.stem, question.topicId]
@@ -28,7 +28,7 @@ async function insert(question: QuestionToCreate): Promise<number> {
   return questionInsertion.rowCount;
 }
 
-async function list(): Promise<QueryResult<any>> {
+async function list(): Promise<QueryResult> {
   return connection.query(`
     SELECT
       questions.id AS id,
@@ -45,7 +45,7 @@ async function list(): Promise<QueryResult<any>> {
   `);
 }
 
-async function listByTopic(topicId: number): Promise<QueryResult<any>> {
+async function listByTopic(topicId: number): Promise<QueryResult> {
   return connection.query(`
     SELECT
       questions.id AS id,
@@ -63,21 +63,21 @@ async function listByTopic(topicId: number): Promise<QueryResult<any>> {
   `, [topicId]);
 }
 
-async function update(question: QuestionToUpdate): Promise<QueryResult<any>> {
+async function update(question: QuestionToUpdate): Promise<QueryResult> {
   return connection.query(`
     UPDATE questions SET name = $1, stem = $2, "topicId" = $3 WHERE id = $4;
   `, [question.name, question.stem, question.topicId, question.id]
   );
 }
 
-async function removeAlternatives(id: number): Promise<QueryResult<any>> {
+async function removeAlternatives(id: number): Promise<QueryResult> {
   return connection.query(`
     DELETE FROM alternatives WHERE "questionId" = $1;
   `, [id]
   );
 }
 
-async function removeQuestion(id: number): Promise<QueryResult<any>> {
+async function removeQuestion(id: number): Promise<QueryResult> {
   return connection.query(`
     DELETE FROM questions WHERE id = $1
   `, [id]

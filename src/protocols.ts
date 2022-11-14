@@ -1,8 +1,3 @@
-export type Subject = {
-  id: number,
-  name: string
-};
-
 export type Topic = {
   id: number,
   name: string,
@@ -29,7 +24,8 @@ export type QuestionToRead = {
   id: number,
   name: string,
   stem: string,
-  topic: Topic,
+  topic: string,
+  subject: string,
   alternatives: Alternative[]
 };
 
@@ -40,3 +36,12 @@ export type QuestionToUpdate = {
   topicId: number
 };
 
+export type QuestionFromDatabase = {
+  id: number,
+  name: string,
+  topic: string,
+  subject: string,
+  stem: string,
+  content: string,
+  correct: boolean
+};

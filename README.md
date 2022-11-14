@@ -25,15 +25,15 @@ It must contais exactly one true alternative and at least one false alternative.
 ````
 Response: [
     {
-        id: number,
-        name: string,
-        stem: string,
-        topic: string,
-        subject: string,
-        alternatives: [
+        "id": number,
+        "name": string,
+        "stem": string,
+        "topic": string,
+        "subject": string,
+        "alternatives": [
             {
-                content: string,
-                correct: boolean
+                "content": string,
+                "correct": boolean
             },
             ...
         ]
@@ -46,15 +46,15 @@ Response: [
 ````
 Response: [
     {
-        id: number,
-        name: string,
-        stem: string,
-        topic: string,
-        subject: string,
-        alternatives: [
+        "id": number,
+        "name": string,
+        "stem": string,
+        "topic": string,
+        "subject": string,
+        "alternatives": [
             {
-                content: string,
-                correct: boolean
+                "content": string,
+                "correct": boolean
             },
             ...
         ]
@@ -66,6 +66,7 @@ Response: [
 **PUT /questions/**
 ````
 Body: {
+    "id": number,
     "name": string,
     "stem": string,
     "topicId": number
@@ -74,16 +75,19 @@ Body: {
 All fields are required.
 
 **DELETE /questions/id/:question_id**
+
 Delete the specified question and its alternatives.
 
 **GET /topics**
 ````
-Response: {
-    id: number,
-    name: string,
-    subject: {
-        id: number,
-        name: string
-    }
-}
+Response: [
+    {
+        "id": number,
+        "name": string,
+        "subject": {
+            "id": number,
+            "name": string
+    },
+    ...
+]
 ````

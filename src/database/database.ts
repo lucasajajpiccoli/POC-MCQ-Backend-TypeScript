@@ -7,7 +7,7 @@ const connection = new Pool({
   port: 5432,
   user: 'postgres',
   password: 'driven',
-  database: 'poc_mmq'
+  database: 'poc_mcq'
 });
 
 export { connection };

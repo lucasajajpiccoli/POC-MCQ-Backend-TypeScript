@@ -1,12 +1,5 @@
-import express from 'express';
-import { Request, Response } from 'express';
+import { app } from './app.js';
 
-const server = express();
-
-server.get('/health', (req: Request, res: Response) => {
-    res.send({message: "All right"});
-});
-
-server.listen(4000, () => {
+app.listen(4000, () => {
     console.log("Listening on port 4000")
 });
